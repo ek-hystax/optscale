@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@apollo/server':
-    specifier: ^4.4.1
-    version: 4.4.1(graphql@16.6.0)
+    specifier: ^4.9.3
+    version: 4.9.3(graphql@16.6.0)
   '@types/node':
     specifier: ^18.14.6
     version: 18.14.6
@@ -74,8 +74,8 @@ packages:
       graphql: 16.6.0
     dev: false
 
-  /@apollo/server@4.4.1(graphql@16.6.0):
-    resolution: {integrity: sha512-KEEM8Q5KvkarPHn6r//nRonVBQ/C69fmkTKHzuL1ZoD7BevdIh7HLeh69wIazC21wrizBHMR+LKIqZuIT9YQVg==}
+  /@apollo/server@4.9.3(graphql@16.6.0):
+    resolution: {integrity: sha512-U56Sx/UmzR3Es344hQ/Ptf2EJrH+kV4ZPoLmgGjWoiwf2wYQ/pRSvkSXgjOvoyE34wSa8Gh7f92ljfLfY+6q1w==}
     engines: {node: '>=14.16.0'}
     peerDependencies:
       graphql: ^16.6.0
