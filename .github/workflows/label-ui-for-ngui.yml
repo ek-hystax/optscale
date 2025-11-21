@@ -23,7 +23,7 @@ jobs:
               - 'ngui/**'
 
       - name: Add "ui" label if ngui files changed
-        if: steps.filter.outputs.ngui == 'true'
+        if: steps.filter.outputs.ngui === 'true'
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
