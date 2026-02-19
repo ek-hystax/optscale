@@ -33,28 +33,14 @@ OptScale is an open source FinOps platform that optimizes cloud costs and perfor
 <br>
 
 <div>
-  <img src="documentation/images/Max_Kuzkin.png" width="80" align="left" style="display: inline; border-radius: 50%; margin-right: 15px;">
+  <img src="documentation/images/Max_Kuzkin.png" width="80" align="left" style="display: inline; border-radius: 50%; margin-right: 15px">
   <i>
     “Hystax OptScale has been a game-changer for our FinOps practice. Its powerful capabilities, flexibility, and seamless integration have empowered us to deliver unprecedented transparency, control, and cost optimization for our clients. We truly value our partnership with Hystax and are excited to innovate further together.”
   </i>
   <div align="right">
-    <b>Max Kuzkin</b>, General Manager, SoftwareOne Platform
+    <i><b>Max Kuzkin</b>, General Manager, SoftwareOne Platform</i>
   </div>
 </div>
-
-<br>
-
-<img src="documentation/images/Max_Kuzkin.png" width="80" align="left" style="border-radius:50%; margin-right:15px;">
-<i>
-“Hystax OptScale has been a game-changer for our FinOps practice. Its powerful capabilities, flexibility, and seamless integration have empowered us to deliver unprecedented transparency, control, and cost optimization for our clients. We truly value our partnership with Hystax and are excited to innovate further together.” 
-<br>
-<div align="right">
-<b>Max Kuzkin</b>, General Manager, SoftwareOne Platform
-</div>
-<br>
-</i>
-
-<br>
 
 <br>
 
@@ -70,20 +56,17 @@ OptScale is an open source FinOps platform that optimizes cloud costs and perfor
 <li>S3 and Redshift instrumentation</li>
 <li>VM Power Schedules</li>
 
-  
 <br>You can check OptScale [live demo](https://my.optscale.com/live-demo) to explore product features on a pre-generated demo organization.
 <br>Learn more about the Hystax OptScale platform and its capabilities at [our website](https://hystax.com).
 
-
 ## Demos
 
-
-|                    Databricks connection                       |                            Cost and performance recommendations               |
-| :------------------------------------------------------------: | :---------------------------------------------------------------: |
+|                         Databricks connection                          |                         Cost and performance recommendations                          |
+| :--------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
 | <img src="documentation/images/Databricks-connection.png" width="500"> | <img src="documentation/images/Cost-and-performance-recommendations.png" width="500"> |
 
-|                            Pools of resources                               |                          Shared Environments                     |
-| :-------------------------------------------------------------------------: | :--------------------------------------------------------------: |
+|                   Pools of resources                   |                         Shared Environments                          |
+| :----------------------------------------------------: | :------------------------------------------------------------------: |
 | <img src="documentation/images/Pools.png" width="500"> | <img src="documentation/images/Shared-environments.png" width="500"> |
 
 |                       Cost geo map                        |                        VM Power Schedules                        |
@@ -106,15 +89,15 @@ OptScale is an open source FinOps platform that optimizes cloud costs and perfor
 
 The minimum hardware requirements for OptScale cluster: CPU: 8+ cores, RAM: 16Gb, SSD: 150+ Gb.
 
-NVMe SSD is recommended.  
+NVMe SSD is recommended.
 
 **OS Required**: [Ubuntu 24.04](https://releases.ubuntu.com/noble/).
 
 _The current installation process should work also on Ubuntu 22.04_
 
 #### Updating old installation
-please follow [this document](documentation/update_to_24.04.md) to upgrade your existing installation on Ubuntu 20.04.
 
+please follow [this document](documentation/update_to_24.04.md) to upgrade your existing installation on Ubuntu 20.04.
 
 #### Installing required packages
 
@@ -160,7 +143,7 @@ ansible-playbook -e "ansible_ssh_user=<user>" -k -K -i "<ip address>," ansible/k
 where `<user>` - actual username; `<ip address>` - host ip address,
 ip address should be private address of the machine, you can check it with the command `ip a`.
 
-**Note:** do not use `127.0.0.1` or `localhost` as the hostname. Instead, prefer providing the server's hostname (check with the command `hostname`) and make sure it is resolveable from host that the Ansible Playbooks ran from (if needed, add to the ``/etc/hosts`` files).
+**Note:** do not use `127.0.0.1` or `localhost` as the hostname. Instead, prefer providing the server's hostname (check with the command `hostname`) and make sure it is resolveable from host that the Ansible Playbooks ran from (if needed, add to the `/etc/hosts` files).
 
 If your deployment server is the service-host server, add `-e "ansible_connection=local"` to the ansible command.
 
@@ -169,6 +152,7 @@ When ansible is completed, re-login, or simply run
 ```
 source ~/.profile
 ```
+
 to add local ~/bin path to the system $PATH variable
 
 **Note:** you can build local images running
@@ -176,6 +160,7 @@ to add local ~/bin path to the system $PATH variable
 ```
 cd .. && ./build.sh --use-nerdctl
 ```
+
 Images will build with version(tag) = local
 
 #### Creating user overlay
@@ -242,26 +227,28 @@ kubectl get services --field-selector metadata.name=ngingress-nginx-ingress-cont
 
 In case of the following error:
 
-When running  ```build.sh --use-nerdctl```:
-```
-FATA[0000] rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd): stat /run/user/1000/containerd-rootless: no such file or directory 
-Building image for trapper_worker, build tag: local
-FATA[0000] rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd): stat /run/user/1000/containerd-rootless: no such file or directory 
-```
-simply re-login or run ```source ~/.profile```
+When running `build.sh --use-nerdctl`:
 
-when running ```./runkube.py... <>```
+```
+FATA[0000] rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd): stat /run/user/1000/containerd-rootless: no such file or directory
+Building image for trapper_worker, build tag: local
+FATA[0000] rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd): stat /run/user/1000/containerd-rootless: no such file or directory
+```
+
+simply re-login or run `source ~/.profile`
+
+when running `./runkube.py... <>`
+
 ```
 python_on_whales.exceptions.DockerException: The command executed was `/usr/local/bin/nerdctl image inspect arcee:local`.
 It returned with code 1
 The content of stdout is ''
 The content of stderr is 'time="2024-12-23T11:05:34Z" level=fatal msg="rootless containerd not running? (hint: use `containerd-rootless-setuptool.sh install` to start rootless containerd): stat /run/user/1000/containerd-rootless: no such file or directory"
 ```
-the solution is also simply re-login or run ```source ~/.profile```
 
+the solution is also simply re-login or run `source ~/.profile`
 
 ---
-
 
 ```
 fatal: [172.22.24.157]: FAILED! => {"changed": true, "cmd": "kubeadm init --config /tmp/kubeadm-init.conf --upload-certs > kube_init.log", "delta": "0:00:00.936514", "end": "2022-11-30 09:42:18.304928", "msg": "non-zero return code", "rc": 1, "start": "2022-11-30 09:42:17.368414", "stderr": "W1130 09:42:17.461362  334184 validation.go:28] Cannot validate kube-proxy config - no validator is available\nW1130 09:42:17.461709  334184 validation.go:28] Cannot validate kubelet config - no validator is available\n\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/\nerror execution phase preflight: [preflight] Some fatal errors occurred:\n\t[ERROR Port-6443]: Port 6443 is in use\n\t[ERROR Port-10259]: Port 10259 is in use\n\t[ERROR Port-10257]: Port 10257 is in use\n\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists\n\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists\n\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists\n\t[ERROR FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists\n\t[ERROR Port-10250]: Port 10250 is in use\n\t[ERROR Port-2379]: Port 2379 is in use\n\t[ERROR Port-2380]: Port 2380 is in use\n\t[ERROR DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty\n[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`\nTo see the stack trace of this error execute with --v=5 or higher", "stderr_lines": ["W1130 09:42:17.461362  334184 validation.go:28] Cannot validate kube-proxy config - no validator is available", "W1130 09:42:17.461709  334184 validation.go:28] Cannot validate kubelet config - no validator is available", "\t[WARNING IsDockerSystemdCheck]: detected \"cgroupfs\" as the Docker cgroup driver. The recommended driver is \"systemd\". Please follow the guide at https://kubernetes.io/docs/setup/cri/", "error execution phase preflight: [preflight] Some fatal errors occurred:", "\t[ERROR Port-6443]: Port 6443 is in use", "\t[ERROR Port-10259]: Port 10259 is in use", "\t[ERROR Port-10257]: Port 10257 is in use", "\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-apiserver.yaml]: /etc/kubernetes/manifests/kube-apiserver.yaml already exists", "\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-controller-manager.yaml]: /etc/kubernetes/manifests/kube-controller-manager.yaml already exists", "\t[ERROR FileAvailable--etc-kubernetes-manifests-kube-scheduler.yaml]: /etc/kubernetes/manifests/kube-scheduler.yaml already exists", "\t[ERROR FileAvailable--etc-kubernetes-manifests-etcd.yaml]: /etc/kubernetes/manifests/etcd.yaml already exists", "\t[ERROR Port-10250]: Port 10250 is in use", "\t[ERROR Port-2379]: Port 2379 is in use", "\t[ERROR Port-2380]: Port 2380 is in use", "\t[ERROR DirAvailable--var-lib-etcd]: /var/lib/etcd is not empty", "[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`", "To see the stack trace of this error execute with --v=5 or higher"], "stdout": "", "stdout_lines": []}
@@ -273,24 +260,30 @@ run the following command to reset k8s and retry the installation command:
 sudo kubeadm reset -f
 ansible-playbook -e "ansible_ssh_user=<user>" -k -K -i "<ip address>," ansible/k8s-master.yaml
 ```
+
 ---
 
 in case of no connection on 443 port:
 
 1. check ingress controller status
+
 ```
 $ kubectl get pod | grep ingress
 ```
+
 ```
 ngingress-nginx-ingress-controller-default-backend-78ccb699zp2z   1/1     Running           1 (8d ago)   18d
 ngingress-nginx-ingress-controller-xdlp4                          1/1     Running           1 (8d ago)   18d
 ```
+
 if ngingress-nginx-ingress-controller-xxxxx in the **CrashLoopBackoff** state or service in **0/1** please do following:
 
 1. edit ngingress-nginx-ingress-controller daemonset
+
 ```
 $ kubectl edit daemonset ngingress-nginx-ingress-controller
 ```
+
 2. search for limits section
 
 ```
@@ -300,6 +293,7 @@ resources:
   requests:
     memory: 192Mi
 ```
+
 3. try to increase the limits and save the configmap, pods will automatically restarted
 
 ## Documentation
